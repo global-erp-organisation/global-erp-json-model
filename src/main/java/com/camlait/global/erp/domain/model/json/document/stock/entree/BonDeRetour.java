@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.document.stock.entree;
 
 
-import com.camlait.global.erp.domain.model.json.enumeration.TypeDocuments;
+import com.camlait.global.erp.domain.enumeration.TypeDocuments;
 
 
 public class BonDeRetour extends DocumentEntree {

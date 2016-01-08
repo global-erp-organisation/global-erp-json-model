@@ -1,9 +1,9 @@
 package com.camlait.global.erp.domain.model.json.document.stock.virement;
 
+import com.camlait.global.erp.domain.enumeration.SensOperation;
+import com.camlait.global.erp.domain.enumeration.TypeDocuments;
 import com.camlait.global.erp.domain.model.json.document.stock.DocumentDeStock;
 import com.camlait.global.erp.domain.model.json.entrepot.Magasin;
-import com.camlait.global.erp.domain.model.json.enumeration.SensOperation;
-import com.camlait.global.erp.domain.model.json.enumeration.TypeDocuments;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 

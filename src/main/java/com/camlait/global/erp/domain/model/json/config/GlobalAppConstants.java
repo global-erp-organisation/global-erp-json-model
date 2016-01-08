@@ -1,6 +1,6 @@
 package com.camlait.global.erp.domain.model.json.config;
 
-import com.camlait.global.erp.domain.model.json.exception.GlobalErpServiceException;
+import com.camlait.global.erp.domain.exception.GlobalErpServiceException;
 
 public class GlobalAppConstants {
 

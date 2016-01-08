@@ -1,6 +1,6 @@
 package com.camlait.global.erp.domain.model.json.partenaire;
 
-import com.camlait.global.erp.domain.model.json.enumeration.TypePartenaire;
+import com.camlait.global.erp.domain.enumeration.TypePartenaire;
 import com.camlait.global.erp.domain.model.json.operation.caisse.Caisse;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;

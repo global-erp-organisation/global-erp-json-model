@@ -3,17 +3,17 @@ package com.camlait.global.erp.domain.model.json.auth;
 import java.util.Collection;
 
 import com.camlait.global.erp.domain.model.json.Entite;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
-public class Groupe extends Entite {
+
+public class GroupeModel extends Entite {
 
 	private Long groupeId;
 
 	private String descriptionGroupe;
 
-	private Collection<GroupeUtilisateur> groupeUtilisateurs;
+	@JsonManagedReference
+	private Collection<GroupeUtilisateurModel> groupeUtilisateurModels;
 
 	public Long getGroupeId() {
 		return groupeId;
@@ -31,12 +31,12 @@ public class Groupe extends Entite {
 		this.descriptionGroupe = descriptionGroupe;
 	}
 
-	public Collection<GroupeUtilisateur> getGroupeUtilisateurs() {
-		return groupeUtilisateurs;
+	public Collection<GroupeUtilisateurModel> getGroupeUtilisateurs() {
+		return groupeUtilisateurModels;
 	}
 
-	public void setGroupeUtilisateurs(Collection<GroupeUtilisateur> groupeUtilisateurs) {
-		this.groupeUtilisateurs = groupeUtilisateurs;
+	public void setGroupeUtilisateurs(Collection<GroupeUtilisateurModel> groupeUtilisateurModels) {
+		this.groupeUtilisateurModels = groupeUtilisateurModels;
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class Groupe extends Entite {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Groupe other = (Groupe) obj;
+		GroupeModel other = (GroupeModel) obj;
 		if (groupeId == null) {
 			if (other.groupeId != null)
 				return false;
@@ -64,7 +64,7 @@ public class Groupe extends Entite {
 		return true;
 	}
 
-	public Groupe() {
+	public GroupeModel() {
 		super();
 	}
 }

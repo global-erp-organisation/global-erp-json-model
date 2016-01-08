@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.camlait.global.erp.domain.model.json.Entite;
 import com.camlait.global.erp.domain.model.json.entrepot.Magasin;
-import com.camlait.global.erp.domain.model.json.produit.Produit;
+import com.camlait.global.erp.domain.model.json.produit.ProduitModel;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -14,7 +14,7 @@ public class Stock extends Entite {
 
 	private Long stockId;
 
-	private Produit produit;
+	private ProduitModel produitModel;
 
 	private Magasin magasin;
 
@@ -24,12 +24,12 @@ public class Stock extends Entite {
 
 	private Date derniereMiseAJour;
 
-	public Produit getProduit() {
-		return produit;
+	public ProduitModel getProduit() {
+		return produitModel;
 	}
 
-	public void setProduit(Produit produit) {
-		this.produit = produit;
+	public void setProduit(ProduitModel produitModel) {
+		this.produitModel = produitModel;
 	}
 
 	public Magasin getMagasin() {

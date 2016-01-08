@@ -3,9 +3,9 @@ package com.camlait.global.erp.domain.model.json.partenaire;
 import java.util.Collection;
 import java.util.Date;
 
+import com.camlait.global.erp.domain.enumeration.TypePartenaire;
 import com.camlait.global.erp.domain.model.json.Entite;
 import com.camlait.global.erp.domain.model.json.document.commerciaux.vente.DocumentDeVente;
-import com.camlait.global.erp.domain.model.json.enumeration.TypePartenaire;
 import com.camlait.global.erp.domain.model.json.immobilisation.PartenaireImmobilisation;
 import com.camlait.global.erp.domain.model.json.operation.Operation;
 import com.camlait.global.erp.domain.model.json.organisation.Centre;

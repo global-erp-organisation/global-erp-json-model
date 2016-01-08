@@ -2,8 +2,8 @@ package com.camlait.global.erp.domain.model.json.operation;
 
 import java.util.Date;
 
+import com.camlait.global.erp.domain.enumeration.SensOperation;
 import com.camlait.global.erp.domain.model.json.Entite;
-import com.camlait.global.erp.domain.model.json.enumeration.SensOperation;
 import com.camlait.global.erp.domain.model.json.partenaire.Employe;
 import com.camlait.global.erp.domain.model.json.partenaire.Partenaire;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

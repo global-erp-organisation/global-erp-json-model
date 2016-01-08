@@ -3,7 +3,7 @@ package com.camlait.global.erp.domain.model.json.document;
 import java.util.Date;
 
 import com.camlait.global.erp.domain.model.json.Entite;
-import com.camlait.global.erp.domain.model.json.document.commerciaux.Taxe;
+import com.camlait.global.erp.domain.model.json.document.commerciaux.TaxeModel;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -14,7 +14,7 @@ public class LigneDeDocumentTaxe extends Entite {
     
     private LigneDeDocument ligneDeDocument;
     
-    private Taxe taxe;
+    private TaxeModel taxeModel;
     
     private double tauxDeTaxe;
     
@@ -30,12 +30,12 @@ public class LigneDeDocumentTaxe extends Entite {
         this.ligneDeDocument = ligneDeDocument;
     }
     
-    public Taxe getTaxe() {
-        return taxe;
+    public TaxeModel getTaxe() {
+        return taxeModel;
     }
     
-    public void setTaxe(Taxe taxe) {
-        this.taxe = taxe;
+    public void setTaxe(TaxeModel taxeModel) {
+        this.taxeModel = taxeModel;
     }
     
     public double getTauxDeTaxe() {

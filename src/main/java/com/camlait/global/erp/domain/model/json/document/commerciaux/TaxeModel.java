@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
-public class Taxe extends Entite {
+public class TaxeModel extends Entite {
 
 	private Long taxeId;
 
@@ -70,13 +70,13 @@ public class Taxe extends Entite {
 		this.derniereMiseAJour = derniereMiseAJour;
 	}
 
-	public Taxe(Long taxeId, String codeTaxe) {
+	public TaxeModel(Long taxeId, String codeTaxe) {
 		super();
 		this.taxeId = taxeId;
 		this.codeTaxe = codeTaxe;
 	}
 
-	public Taxe() {
+	public TaxeModel() {
 		setDateDeCreation(new Date());
 		setDerniereMiseAJour(new Date());
 	}

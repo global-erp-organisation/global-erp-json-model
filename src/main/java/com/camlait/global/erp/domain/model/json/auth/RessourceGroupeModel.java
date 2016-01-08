@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
-public class RessourceGroupe extends Entite {
+public class RessourceGroupeModel extends Entite {
 
 	private Long resourceGroupeId;
 
-	private Groupe groupe;
+	private GroupeModel groupeModel;
 
-	private Ressource ressource;
+	private RessourceModel ressourceModel;
 
 	public Long getResourceGroupeId() {
 		return resourceGroupeId;
@@ -22,20 +22,20 @@ public class RessourceGroupe extends Entite {
 		this.resourceGroupeId = resourceGroupeId;
 	}
 
-	public Groupe getGroupe() {
-		return groupe;
+	public GroupeModel getGroupe() {
+		return groupeModel;
 	}
 
-	public void setGroupe(Groupe groupe) {
-		this.groupe = groupe;
+	public void setGroupe(GroupeModel groupeModel) {
+		this.groupeModel = groupeModel;
 	}
 
-	public Ressource getRessource() {
-		return ressource;
+	public RessourceModel getRessource() {
+		return ressourceModel;
 	}
 
-	public void setRessource(Ressource ressource) {
-		this.ressource = ressource;
+	public void setRessource(RessourceModel ressourceModel) {
+		this.ressourceModel = ressourceModel;
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class RessourceGroupe extends Entite {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		RessourceGroupe other = (RessourceGroupe) obj;
+		RessourceGroupeModel other = (RessourceGroupeModel) obj;
 		if (resourceGroupeId == null) {
 			if (other.resourceGroupeId != null)
 				return false;
@@ -63,7 +63,7 @@ public class RessourceGroupe extends Entite {
 		return true;
 	}
 
-	public RessourceGroupe() {
+	public RessourceGroupeModel() {
 		super();
 	}
 }

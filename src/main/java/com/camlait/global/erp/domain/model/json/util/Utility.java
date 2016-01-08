@@ -1,5 +1,10 @@
 package com.camlait.global.erp.domain.model.json.util;
 
+import com.camlait.global.erp.domain.enumeration.AutreEnum;
+import com.camlait.global.erp.domain.enumeration.EnumTypeEntite;
+import com.camlait.global.erp.domain.enumeration.Portee;
+import com.camlait.global.erp.domain.enumeration.TypeDocuments;
+import com.camlait.global.erp.domain.enumeration.TypePartenaire;
 import com.camlait.global.erp.domain.model.json.Entite;
 import com.camlait.global.erp.domain.model.json.bmq.Bmq;
 import com.camlait.global.erp.domain.model.json.document.Document;
@@ -19,11 +24,6 @@ import com.camlait.global.erp.domain.model.json.document.stock.sortie.Echantillo
 import com.camlait.global.erp.domain.model.json.entrepot.Entrepot;
 import com.camlait.global.erp.domain.model.json.entrepot.Magasin;
 import com.camlait.global.erp.domain.model.json.entrepot.MagasinMobile;
-import com.camlait.global.erp.domain.model.json.enumeration.AutreEnum;
-import com.camlait.global.erp.domain.model.json.enumeration.EnumTypeEntite;
-import com.camlait.global.erp.domain.model.json.enumeration.Portee;
-import com.camlait.global.erp.domain.model.json.enumeration.TypeDocuments;
-import com.camlait.global.erp.domain.model.json.enumeration.TypePartenaire;
 import com.camlait.global.erp.domain.model.json.inventaire.Inventaire;
 import com.camlait.global.erp.domain.model.json.organisation.Centre;
 import com.camlait.global.erp.domain.model.json.organisation.Localisation;
@@ -37,7 +37,7 @@ import com.camlait.global.erp.domain.model.json.partenaire.Employe;
 import com.camlait.global.erp.domain.model.json.partenaire.Magasinier;
 import com.camlait.global.erp.domain.model.json.partenaire.Partenaire;
 import com.camlait.global.erp.domain.model.json.partenaire.Vendeur;
-import com.camlait.global.erp.domain.model.json.produit.CategorieProduit;
+import com.camlait.global.erp.domain.model.json.produit.CategorieProduitModel;
 
 public final class Utility {
     
@@ -57,11 +57,11 @@ public final class Utility {
         return document instanceof DocumentDeVente;
     }
     
-    public static boolean isDetail(CategorieProduit categorie) {
+    public static boolean isDetail(CategorieProduitModel categorie) {
         return categorie.getPortee() == Portee.DETAIL;
     }
     
-    public static boolean isTotal(CategorieProduit categorie) {
+    public static boolean isTotal(CategorieProduitModel categorie) {
         return categorie.getPortee() == Portee.TOTAL;
     }
     

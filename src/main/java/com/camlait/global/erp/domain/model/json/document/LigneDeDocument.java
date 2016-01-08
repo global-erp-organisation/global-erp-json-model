@@ -3,9 +3,9 @@ package com.camlait.global.erp.domain.model.json.document;
 import java.util.Collection;
 import java.util.Date;
 
+import com.camlait.global.erp.domain.enumeration.SensOperation;
 import com.camlait.global.erp.domain.model.json.Entite;
-import com.camlait.global.erp.domain.model.json.enumeration.SensOperation;
-import com.camlait.global.erp.domain.model.json.produit.Produit;
+import com.camlait.global.erp.domain.model.json.produit.ProduitModel;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -15,7 +15,7 @@ public class LigneDeDocument extends Entite {
     
     private Long ligneDeDocumentId;
     
-     private Produit produit;
+     private ProduitModel produitModel;
     
     private Long quantiteLigne;
     
@@ -39,12 +39,12 @@ public class LigneDeDocument extends Entite {
         this.ligneDeDocumentId = ligneDeDocumentId;
     }
     
-    public Produit getProduit() {
-        return produit;
+    public ProduitModel getProduit() {
+        return produitModel;
     }
     
-    public void setProduit(Produit produit) {
-        this.produit = produit;
+    public void setProduit(ProduitModel produitModel) {
+        this.produitModel = produitModel;
     }
     
     public Long getQuantiteLigne() {

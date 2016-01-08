@@ -1,8 +1,8 @@
 package com.camlait.global.erp.domain.model.json.document.commerciaux.vente;
 
+import com.camlait.global.erp.domain.enumeration.SensOperation;
+import com.camlait.global.erp.domain.enumeration.TypeDocuments;
 import com.camlait.global.erp.domain.model.json.document.commerciaux.DocumentCommerciaux;
-import com.camlait.global.erp.domain.model.json.enumeration.SensOperation;
-import com.camlait.global.erp.domain.model.json.enumeration.TypeDocuments;
 import com.camlait.global.erp.domain.model.json.organisation.Zone;
 import com.camlait.global.erp.domain.model.json.partenaire.Client;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

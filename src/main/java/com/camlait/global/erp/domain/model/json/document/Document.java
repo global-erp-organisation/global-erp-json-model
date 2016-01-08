@@ -3,11 +3,11 @@ package com.camlait.global.erp.domain.model.json.document;
 import java.util.Collection;
 import java.util.Date;
 
+import com.camlait.global.erp.domain.enumeration.SensOperation;
+import com.camlait.global.erp.domain.enumeration.TypeDocuments;
 import com.camlait.global.erp.domain.model.json.Entite;
 import com.camlait.global.erp.domain.model.json.bmq.Bmq;
 import com.camlait.global.erp.domain.model.json.entrepot.Magasin;
-import com.camlait.global.erp.domain.model.json.enumeration.SensOperation;
-import com.camlait.global.erp.domain.model.json.enumeration.TypeDocuments;
 import com.camlait.global.erp.domain.model.json.inventaire.Inventaire;
 import com.camlait.global.erp.domain.model.json.partenaire.Employe;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

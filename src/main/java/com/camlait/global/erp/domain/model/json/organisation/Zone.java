@@ -2,8 +2,8 @@ package com.camlait.global.erp.domain.model.json.organisation;
 
 import java.util.Collection;
 
+import com.camlait.global.erp.domain.enumeration.AutreEnum;
 import com.camlait.global.erp.domain.model.json.document.commerciaux.vente.DocumentDeVente;
-import com.camlait.global.erp.domain.model.json.enumeration.AutreEnum;
 import com.camlait.global.erp.domain.model.json.partenaire.Client;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;

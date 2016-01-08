@@ -2,9 +2,9 @@ package com.camlait.global.erp.domain.model.json.partenaire;
 
 import java.util.Date;
 
-import com.camlait.global.erp.domain.model.json.auth.Utilisateur;
-import com.camlait.global.erp.domain.model.json.enumeration.Sexe;
-import com.camlait.global.erp.domain.model.json.enumeration.TypePartenaire;
+import com.camlait.global.erp.domain.enumeration.Sexe;
+import com.camlait.global.erp.domain.enumeration.TypePartenaire;
+import com.camlait.global.erp.domain.model.json.auth.UtilisateurModel;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -19,7 +19,7 @@ public class Employe extends Partenaire {
 
 	private Date dateDeNaissance;
 
-	private Utilisateur utilisateur;
+	private UtilisateurModel utilisateurModel;
 
 	private Emplois emplois;
 
@@ -57,12 +57,12 @@ public class Employe extends Partenaire {
 		this.dateDeNaissance = dateDeNaissance;
 	}
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	public UtilisateurModel getUtilisateur() {
+		return utilisateurModel;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+	public void setUtilisateur(UtilisateurModel utilisateurModel) {
+		this.utilisateurModel = utilisateurModel;
 	}
 
 	public Emplois getEmplois() {

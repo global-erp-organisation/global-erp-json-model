@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
-public class Utilisateur extends Entite {
+public class UtilisateurModel extends Entite {
 	
 	private String codeUtilisateur;
 
@@ -89,7 +89,7 @@ public class Utilisateur extends Entite {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Utilisateur other = (Utilisateur) obj;
+		UtilisateurModel other = (UtilisateurModel) obj;
 		if (codeUtilisateur == null) {
 			if (other.codeUtilisateur != null)
 				return false;
@@ -98,7 +98,7 @@ public class Utilisateur extends Entite {
 		return true;
 	}
 
-	public Utilisateur() {
+	public UtilisateurModel() {
 		setDateDeCreation(new Date());
 		setDerniereMiseAJour(new Date());
 	}

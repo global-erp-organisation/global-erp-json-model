@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.entrepot;
 
 
-import com.camlait.global.erp.domain.model.json.enumeration.AutreEnum;
+import com.camlait.global.erp.domain.enumeration.AutreEnum;
 
 public class MagasinFixe extends Magasin {
     

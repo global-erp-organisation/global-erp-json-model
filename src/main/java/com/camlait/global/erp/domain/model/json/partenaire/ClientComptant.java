@@ -1,6 +1,6 @@
 package com.camlait.global.erp.domain.model.json.partenaire;
 
-import com.camlait.global.erp.domain.model.json.enumeration.TypePartenaire;
+import com.camlait.global.erp.domain.enumeration.TypePartenaire;
 
 
 public class ClientComptant extends Client {
