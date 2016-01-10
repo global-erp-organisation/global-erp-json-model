@@ -156,7 +156,7 @@ public class CategorieProduitModel extends Entite {
     }
     
     public CategorieProduitModel(CategorieProduit c) {
-        setCategorieParentId(c.getCategorieParent().getCategorieProduitId());
+        setCategorieParentId((c.getCategorieParent()==null)?null:c.getCategorieParent().getCategorieProduitId());
         setCategorieProduitId(c.getCategorieProduitId());
         setCategorieProduitTaxes(getTaxes(c));
         setCategorieTaxable(c.isCategorieTaxable());

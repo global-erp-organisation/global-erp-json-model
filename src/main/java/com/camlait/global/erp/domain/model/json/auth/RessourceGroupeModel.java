@@ -1,18 +1,21 @@
 package com.camlait.global.erp.domain.model.json.auth;
 
+import java.util.Date;
+
+import com.camlait.global.erp.domain.auth.RessourceGroupe;
 import com.camlait.global.erp.domain.model.json.Entite;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class RessourceGroupeModel extends Entite {
 
 	private Long resourceGroupeId;
 
-	private GroupeModel groupeModel;
+	private Long groupeId;
 
-	private RessourceModel ressourceModel;
+	private Long ressourceId;
+
+	private Date dateDeCreation;
+
+	private Date derniereMiseAJour;
 
 	public Long getResourceGroupeId() {
 		return resourceGroupeId;
@@ -22,20 +25,36 @@ public class RessourceGroupeModel extends Entite {
 		this.resourceGroupeId = resourceGroupeId;
 	}
 
-	public GroupeModel getGroupe() {
-		return groupeModel;
+	public Long getGroupeId() {
+		return groupeId;
 	}
 
-	public void setGroupe(GroupeModel groupeModel) {
-		this.groupeModel = groupeModel;
+	public void setGroupeId(Long groupeId) {
+		this.groupeId = groupeId;
 	}
 
-	public RessourceModel getRessource() {
-		return ressourceModel;
+	public Long getRessourceId() {
+		return ressourceId;
 	}
 
-	public void setRessource(RessourceModel ressourceModel) {
-		this.ressourceModel = ressourceModel;
+	public void setRessourceId(Long ressourceId) {
+		this.ressourceId = ressourceId;
+	}
+
+	public Date getDateDeCreation() {
+		return dateDeCreation;
+	}
+
+	public void setDateDeCreation(Date dateDeCreation) {
+		this.dateDeCreation = dateDeCreation;
+	}
+
+	public Date getDerniereMiseAJour() {
+		return derniereMiseAJour;
+	}
+
+	public void setDerniereMiseAJour(Date derniereMiseAJour) {
+		this.derniereMiseAJour = derniereMiseAJour;
 	}
 
 	@Override
@@ -65,5 +84,13 @@ public class RessourceGroupeModel extends Entite {
 
 	public RessourceGroupeModel() {
 		super();
+	}
+
+	public RessourceGroupeModel(RessourceGroupe rg) {
+		setDateDeCreation(rg.getDateDeCreation());
+		setDerniereMiseAJour(rg.getDerniereMiseAJour());
+		setGroupeId(rg.getGroupe().getGroupeId());
+		setResourceGroupeId(rg.getResourceGroupeId());
+		setRessourceId((rg.getRessource() == null) ? null : rg.getRessource().getRessourceId());
 	}
 }

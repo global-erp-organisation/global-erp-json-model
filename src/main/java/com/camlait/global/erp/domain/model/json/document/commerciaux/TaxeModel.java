@@ -2,12 +2,9 @@ package com.camlait.global.erp.domain.model.json.document.commerciaux;
 
 import java.util.Date;
 
+import com.camlait.global.erp.domain.document.commerciaux.Taxe;
 import com.camlait.global.erp.domain.model.json.Entite;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class TaxeModel extends Entite {
 
 	private Long taxeId;
@@ -80,4 +77,14 @@ public class TaxeModel extends Entite {
 		setDateDeCreation(new Date());
 		setDerniereMiseAJour(new Date());
 	}
+
+	public TaxeModel(Taxe t) {
+		setCodeTaxe(t.getCodeTaxe());
+		setDateDeCreation(t.getDateDeCreation());
+		setDerniereMiseAJour(t.getDerniereMiseAJour());
+		setTaxeDescription(t.getTaxeDescription());
+		setTaxeId(t.getTaxeId());
+		setValeurPourcentage(t.getValeurPourcentage());
+	}
+
 }

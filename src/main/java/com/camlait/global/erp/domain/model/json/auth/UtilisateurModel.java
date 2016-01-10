@@ -2,16 +2,15 @@ package com.camlait.global.erp.domain.model.json.auth;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
+import com.camlait.global.erp.domain.auth.Utilisateur;
 import com.camlait.global.erp.domain.model.json.Entite;
-import com.camlait.global.erp.domain.model.json.partenaire.Employe;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.camlait.global.erp.domain.model.json.partenaire.EmployeModel;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class UtilisateurModel extends Entite {
-	
+
 	private String codeUtilisateur;
 
 	private String courriel;
@@ -22,7 +21,8 @@ public class UtilisateurModel extends Entite {
 
 	private Date derniereMiseAJour;
 
-	private Collection<Employe> employes;
+	@JsonManagedReference
+	private Collection<EmployeModel> employeModels;
 
 	public String getCodeUtilisateur() {
 		return codeUtilisateur;
@@ -64,14 +64,13 @@ public class UtilisateurModel extends Entite {
 		this.derniereMiseAJour = derniereMiseAJour;
 	}
 
-	public Collection<Employe> getEmployes() {
-		return employes;
+	public Collection<EmployeModel> getEmployes() {
+		return employeModels;
 	}
 
-	public void setEmployes(Collection<Employe> employes) {
-		this.employes = employes;
+	public void setEmployes(Collection<EmployeModel> employeModels) {
+		this.employeModels = employeModels;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -101,5 +100,22 @@ public class UtilisateurModel extends Entite {
 	public UtilisateurModel() {
 		setDateDeCreation(new Date());
 		setDerniereMiseAJour(new Date());
+	}
+
+	public UtilisateurModel(Utilisateur u) {
+		setCodeUtilisateur(u.getCodeUtilisateur());
+		setCodeUtilisateur(u.getCourriel());
+		setDateDeCreation(u.getDateDeCreation());
+		setDerniereMiseAJour(u.getDerniereMiseAJour());
+		setEmployes(getEmployes(u));
+		setMotDePasse(u.getMotDePasse());
+	}
+
+	private Collection<EmployeModel> getEmployes(Utilisateur u) {
+		Collection<EmployeModel> emps = new HashSet<>();
+		u.getEmployes().stream().forEach(e -> {
+			emps.add(new EmployeModel(e));
+		});
+		return emps;
 	}
 }

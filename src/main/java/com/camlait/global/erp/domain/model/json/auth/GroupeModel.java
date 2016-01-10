@@ -1,16 +1,22 @@
 package com.camlait.global.erp.domain.model.json.auth;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
 
+import com.camlait.global.erp.domain.auth.Groupe;
 import com.camlait.global.erp.domain.model.json.Entite;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 
 public class GroupeModel extends Entite {
 
 	private Long groupeId;
 
 	private String descriptionGroupe;
+
+	private Date dateDeCreation;
+
+	private Date derniereMiseAJour;
 
 	@JsonManagedReference
 	private Collection<GroupeUtilisateurModel> groupeUtilisateurModels;
@@ -37,6 +43,22 @@ public class GroupeModel extends Entite {
 
 	public void setGroupeUtilisateurs(Collection<GroupeUtilisateurModel> groupeUtilisateurModels) {
 		this.groupeUtilisateurModels = groupeUtilisateurModels;
+	}
+
+	public Date getDateDeCreation() {
+		return dateDeCreation;
+	}
+
+	public void setDateDeCreation(Date dateDeCreation) {
+		this.dateDeCreation = dateDeCreation;
+	}
+
+	public Date getDerniereMiseAJour() {
+		return derniereMiseAJour;
+	}
+
+	public void setDerniereMiseAJour(Date derniereMiseAJour) {
+		this.derniereMiseAJour = derniereMiseAJour;
 	}
 
 	@Override
@@ -67,4 +89,21 @@ public class GroupeModel extends Entite {
 	public GroupeModel() {
 		super();
 	}
+
+	public GroupeModel(Groupe g) {
+		setDescriptionGroupe(g.getDescriptionGroupe());
+		setGroupeId(g.getGroupeId());
+		setDateDeCreation(g.getDateDeCreation());
+		setDerniereMiseAJour(g.getDerniereMiseAJour());
+		setGroupeUtilisateurs(getGu(g));
+	}
+
+	private Collection<GroupeUtilisateurModel> getGu(Groupe g) {
+		final Collection<GroupeUtilisateurModel> gus = new HashSet<>();
+		g.getGroupeUtilisateurs().stream().forEach(gu -> {
+			gus.add(new GroupeUtilisateurModel(gu));
+		});
+		return gus;
+	}
+
 }
