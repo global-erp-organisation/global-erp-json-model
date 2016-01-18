@@ -10,8 +10,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class RessourceModel extends Entite {
 
 	private Long ressourceId;
-	private String codeRessource;
-
 	private Long ressourceParentId;
 
 	private String descriptionRessource;
@@ -26,24 +24,15 @@ public class RessourceModel extends Entite {
 
 	@JsonManagedReference
 	private Collection<Ressource> ressourceFils;
-	
+
 	private boolean possedeDesFils;
-	
-	
+
 	public Long getRessourceId() {
 		return ressourceId;
 	}
 
 	public void setRessourceId(Long meduId) {
 		this.ressourceId = meduId;
-	}
-
-	public String getCodeRessource() {
-		return codeRessource;
-	}
-
-	public void setCodeRessource(String codeMenu) {
-		this.codeRessource = codeMenu;
 	}
 
 	public Long getRessourceParentId() {
@@ -94,7 +83,6 @@ public class RessourceModel extends Entite {
 		this.appLocalisation = appLocalisation;
 	}
 
-	
 	public Collection<Ressource> getRessourceFils() {
 		return ressourceFils;
 	}
@@ -140,7 +128,6 @@ public class RessourceModel extends Entite {
 	}
 
 	public RessourceModel(Ressource r) {
-		setCodeRessource(r.getCodeRessource());
 		setDateDeCreation(r.getDateDeCreation());
 		setDerniereMiseAJour(r.getDerniereMiseAJour());
 		setDescriptionRessource(r.getDescriptionRessource());
