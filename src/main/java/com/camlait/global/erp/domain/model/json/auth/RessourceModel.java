@@ -12,20 +12,20 @@ public class RessourceModel extends Entite {
 	private Long ressourceId;
 	private Long ressourceParentId;
 
-	private String descriptionRessource;
+	private String title;
 
 	private Date dateDeCreation;
 
 	private Date derniereMiseAJour;
 
-	private String classeIcon;
+	private String icon;
 
-	private String appLocalisation;
+	private String sref;
+
+	private String href;
 
 	@JsonManagedReference
-	private Collection<Ressource> ressourceFils;
-
-	private boolean possedeDesFils;
+	private Collection<Ressource> items;
 
 	public Long getRessourceId() {
 		return ressourceId;
@@ -43,12 +43,12 @@ public class RessourceModel extends Entite {
 		this.ressourceParentId = ressourceParentId;
 	}
 
-	public String getDescriptionRessource() {
-		return descriptionRessource;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setDescriptionRessource(String descriptionMenu) {
-		this.descriptionRessource = descriptionMenu;
+	public void setTitle(String descriptionMenu) {
+		this.title = descriptionMenu;
 	}
 
 	public Date getDateDeCreation() {
@@ -67,36 +67,36 @@ public class RessourceModel extends Entite {
 		this.derniereMiseAJour = derniereMiseAJour;
 	}
 
-	public String getClasseIcon() {
-		return classeIcon;
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setClasseIcon(String classeIcon) {
-		this.classeIcon = classeIcon;
+	public void setIcon(String classeIcon) {
+		this.icon = classeIcon;
 	}
 
-	public String getAppLocalisation() {
-		return appLocalisation;
+	public String getSref() {
+		return sref;
 	}
 
-	public void setAppLocalisation(String appLocalisation) {
-		this.appLocalisation = appLocalisation;
+	public void setSref(String appLocalisation) {
+		this.sref = appLocalisation;
 	}
 
-	public Collection<Ressource> getRessourceFils() {
-		return ressourceFils;
+	public Collection<Ressource> getItems() {
+		return items;
 	}
 
-	public void setRessourceFils(Collection<Ressource> ressourceFils) {
-		this.ressourceFils = ressourceFils;
+	public void setItems(Collection<Ressource> ressourceFils) {
+		this.items = ressourceFils;
 	}
 
-	public boolean isPossedeDesFils() {
-		return possedeDesFils;
+	public String getHref() {
+		return href;
 	}
 
-	public void setPossedeDesFils(boolean possedeDesFils) {
-		this.possedeDesFils = possedeDesFils;
+	public void setHref(String href) {
+		this.href = href;
 	}
 
 	@Override
@@ -130,12 +130,12 @@ public class RessourceModel extends Entite {
 	public RessourceModel(Ressource r) {
 		setDateDeCreation(r.getDateDeCreation());
 		setDerniereMiseAJour(r.getDerniereMiseAJour());
-		setDescriptionRessource(r.getDescriptionRessource());
+		setTitle(r.getTitle());
 		setRessourceId(r.getRessourceId());
 		setRessourceParentId((r.getRessourceParent() == null) ? null : r.getRessourceParent().getRessourceId());
-		setAppLocalisation(r.getAppLocalisation());
-		setClasseIcon(r.getClasseIcon());
-		setRessourceFils(r.getRessourceFilles());
-		setPossedeDesFils(!ressourceFils.isEmpty());
+		setSref(r.getSref());
+		setIcon(r.getIcon());
+		setItems(r.getItems());
+		setHref(r.getHref());
 	}
 }
