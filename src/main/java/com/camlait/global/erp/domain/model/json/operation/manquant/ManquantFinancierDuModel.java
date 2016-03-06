@@ -1,13 +1,15 @@
 package com.camlait.global.erp.domain.model.json.operation.manquant;
 
-import com.camlait.global.erp.domain.enumeration.SensOperation;
 import com.camlait.global.erp.domain.operation.manquant.ManquantFinancierDu;
 
-public class ManquantFinancierDuModel extends ManquantFinancierModel {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-	public ManquantFinancierDuModel() {
-		setSensOperation(SensOperation.ENTREE);
-	}
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+public class ManquantFinancierDuModel extends ManquantFinancierModel {
 
 	public ManquantFinancierDuModel(ManquantFinancierDu m) {
 		super(m);

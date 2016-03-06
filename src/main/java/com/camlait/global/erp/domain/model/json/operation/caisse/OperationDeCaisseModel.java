@@ -5,21 +5,17 @@ import com.camlait.global.erp.domain.operation.caisse.OperationDeCaisse;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class OperationDeCaisseModel extends OperationModel {
 
 	private Long journalId;
-
-	public Long getJournalId() {
-		return journalId;
-	}
-
-	public void setJournalId(Long journalId) {
-		this.journalId = journalId;
-	}
-
-	public OperationDeCaisseModel() {
-	}
 
 	public OperationDeCaisseModel(OperationDeCaisse o) {
 		super(o);

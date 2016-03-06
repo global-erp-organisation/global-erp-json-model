@@ -2,14 +2,15 @@ package com.camlait.global.erp.domain.model.json.document.stock.entree;
 
 
 import com.camlait.global.erp.domain.document.stock.entree.BonDeRetour;
-import com.camlait.global.erp.domain.enumeration.TypeDocuments;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class BonDeRetourModel extends DocumentEntreeModel {
-
-	public BonDeRetourModel() {
-		setTypeDocument(TypeDocuments.BON_DE_RETOUR);
-	}
 	
 	public BonDeRetourModel(BonDeRetour b) {
 		super(b);

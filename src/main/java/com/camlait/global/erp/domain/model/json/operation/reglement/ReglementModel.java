@@ -8,32 +8,19 @@ import com.camlait.global.erp.domain.model.json.operation.reglement.lettrage.Fac
 import com.camlait.global.erp.domain.operation.reglement.Reglement;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class ReglementModel extends OperationModel {
 
 	@JsonManagedReference
 	private Collection<FactureReglementModel> factureReglements;
 
 	private Long modeDeReglementId;
-
-	public Collection<FactureReglementModel> getFactureReglements() {
-		return factureReglements;
-	}
-
-	public void setFactureReglements(Collection<FactureReglementModel> factureReglements) {
-		this.factureReglements = factureReglements;
-	}
-
-	public Long getModeDeReglementId() {
-		return modeDeReglementId;
-	}
-
-	public void setModeDeReglementId(Long modeDeReglementId) {
-		this.modeDeReglementId = modeDeReglementId;
-	}
-
-	public ReglementModel() {
-
-	}
 
 	public ReglementModel(Reglement r) {
 		super(r);

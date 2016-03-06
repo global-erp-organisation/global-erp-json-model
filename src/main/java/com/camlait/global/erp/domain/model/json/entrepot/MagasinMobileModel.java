@@ -2,13 +2,16 @@ package com.camlait.global.erp.domain.model.json.entrepot;
 
 
 import com.camlait.global.erp.domain.entrepot.MagasinMobile;
-import com.camlait.global.erp.domain.enumeration.AutreEnum;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class MagasinMobileModel extends MagasinModel {
     
-    public MagasinMobileModel() {
-        setTypeMagasin(AutreEnum.MAGASIN_MOBILE);
-    }
     public MagasinMobileModel(MagasinMobile m) {
         super(m);
     }

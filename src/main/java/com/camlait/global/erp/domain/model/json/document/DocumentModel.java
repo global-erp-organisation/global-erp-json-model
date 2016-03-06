@@ -12,7 +12,14 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+@Data
+@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
 public class DocumentModel extends Entite {
 
 	private Long documentId;
@@ -39,135 +46,6 @@ public class DocumentModel extends Entite {
 
 	private TypeDocuments typeDocument;
 
-	public Long getDocumentId() {
-		return documentId;
-	}
-
-	public void setDocumentId(Long documentId) {
-		this.documentId = documentId;
-	}
-
-	public String getCodeDocument() {
-		return codeDocument;
-	}
-
-	public void setCodeDocument(String codeDocument) {
-		this.codeDocument = codeDocument;
-	}
-
-	public Long getMagasinId() {
-		return magasinId;
-	}
-
-	public void setMagasinId(Long magasinId) {
-		this.magasinId = magasinId;
-	}
-
-	public Date getDateDocument() {
-		return dateDocument;
-	}
-
-	public void setDateDocument(Date dateDocument) {
-		this.dateDocument = dateDocument;
-	}
-
-	public Date getDateDeCreation() {
-		return dateDeCreation;
-	}
-
-	public void setDateDeCreation(Date dateDeCreation) {
-		this.dateDeCreation = dateDeCreation;
-	}
-
-	public Date getDerniereMiseAJour() {
-		return derniereMiseAJour;
-	}
-
-	public void setDerniereMiseAJour(Date derniereMiseAJour) {
-		this.derniereMiseAJour = derniereMiseAJour;
-	}
-
-	public SensOperation getSensOperation() {
-		return sensOperation;
-	}
-
-	public void setSensOperation(SensOperation sensOperation) {
-		this.sensOperation = sensOperation;
-	}
-
-	public Long getResponsableDocumentId() {
-		return responsableDocumentId;
-	}
-
-	public void setResponsableDocumentId(Long responsableDocumentId) {
-		this.responsableDocumentId = responsableDocumentId;
-	}
-
-	public Long getBmqId() {
-		return bmqId;
-	}
-
-	public void setBmqId(Long bmqId) {
-		this.bmqId = bmqId;
-	}
-
-	public Long getInventaireId() {
-		return inventaireId;
-	}
-
-	public void setInventaireId(Long inventaireId) {
-		this.inventaireId = inventaireId;
-	}
-
-	public Collection<LigneDeDocumentModel> getLigneDocuments() {
-		return ligneDocuments;
-	}
-
-	public void setLigneDocuments(Collection<LigneDeDocumentModel> ligneDocuments) {
-		this.ligneDocuments = ligneDocuments;
-	}
-
-	public TypeDocuments getTypeDocument() {
-		return typeDocument;
-	}
-
-	public void setTypeDocument(TypeDocuments typeDocument) {
-		this.typeDocument = typeDocument;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((documentId == null) ? 0 : documentId.hashCode());
-		result = prime * result + ((codeDocument == null) ? 0 : codeDocument.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DocumentModel other = (DocumentModel) obj;
-		if (documentId == null) {
-			if (other.documentId != null)
-				return false;
-		} else if (!documentId.equals(other.documentId))
-			return false;
-		if (codeDocument == null) {
-			if (other.codeDocument != null)
-				return false;
-		} else if (!codeDocument.equals(other.codeDocument))
-			return false;
-		return true;
-	}
-
-	public DocumentModel() {
-	}
 
 	public DocumentModel(Document d) {
 		setBmqId((d.getBmq() == null) ? null : d.getBmq().getBmqId());

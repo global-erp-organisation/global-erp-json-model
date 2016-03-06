@@ -1,13 +1,15 @@
 package com.camlait.global.erp.domain.model.json.operation.caisse;
 
-import com.camlait.global.erp.domain.enumeration.SensOperation;
 import com.camlait.global.erp.domain.operation.caisse.Retrait;
 
-public class RetraitModel extends OperationDeCaisseModel {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-	public RetraitModel() {
-		setSensOperation(SensOperation.SORTIE);
-	}
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+public class RetraitModel extends OperationDeCaisseModel {
 
 	public RetraitModel(Retrait r) {
 		super(r);

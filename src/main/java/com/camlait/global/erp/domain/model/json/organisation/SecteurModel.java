@@ -3,10 +3,16 @@ package com.camlait.global.erp.domain.model.json.organisation;
 import java.util.Collection;
 import java.util.HashSet;
 
-import com.camlait.global.erp.domain.enumeration.AutreEnum;
 import com.camlait.global.erp.domain.organisation.Secteur;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class SecteurModel extends LocalisationModel {
 
 	private Long regionId;
@@ -14,25 +20,6 @@ public class SecteurModel extends LocalisationModel {
 	@JsonManagedReference
 	private Collection<ZoneModel> zoneModels;
 
-	public Long getRegionId() {
-		return regionId;
-	}
-
-	public void setRegionId(Long regionId) {
-		this.regionId = regionId;
-	}
-
-	public Collection<ZoneModel> getZoneModels() {
-		return zoneModels;
-	}
-
-	public void setZoneModels(Collection<ZoneModel> zoneModels) {
-		this.zoneModels = zoneModels;
-	}
-
-	public SecteurModel() {
-		setTypeLocal(AutreEnum.SECTEUR);
-	}
 
 	public SecteurModel(Secteur s) {
 		super(s);

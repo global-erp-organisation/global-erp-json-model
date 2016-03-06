@@ -2,16 +2,16 @@ package com.camlait.global.erp.domain.model.json.document.stock.entree;
 
 
 import com.camlait.global.erp.domain.document.stock.entree.DocumentEntree;
-import com.camlait.global.erp.domain.enumeration.SensOperation;
-import com.camlait.global.erp.domain.enumeration.TypeDocuments;
 import com.camlait.global.erp.domain.model.json.document.stock.DocumentDeStockModel;
 
-public class DocumentEntreeModel extends DocumentDeStockModel {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-	public DocumentEntreeModel() {
-		setSensOperation(SensOperation.ENTREE);
-		setTypeDocument(TypeDocuments.DOCUMENT_ENTREE);
-	}
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+public class DocumentEntreeModel extends DocumentDeStockModel {
 	
 	public DocumentEntreeModel(DocumentEntree d) {
 		super(d);

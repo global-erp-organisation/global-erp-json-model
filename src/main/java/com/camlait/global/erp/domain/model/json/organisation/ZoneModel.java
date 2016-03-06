@@ -3,12 +3,18 @@ package com.camlait.global.erp.domain.model.json.organisation;
 import java.util.Collection;
 import java.util.HashSet;
 
-import com.camlait.global.erp.domain.enumeration.AutreEnum;
 import com.camlait.global.erp.domain.model.json.document.commerciaux.vente.DocumentDeVenteModel;
 import com.camlait.global.erp.domain.model.json.partenaire.ClientModel;
 import com.camlait.global.erp.domain.organisation.Zone;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class ZoneModel extends LocalisationModel {
 
 	private Long secteurId;
@@ -19,39 +25,11 @@ public class ZoneModel extends LocalisationModel {
 	@JsonManagedReference
 	private Collection<ClientModel> clientModels;
 
-	public Long getSecteurId() {
-		return secteurId;
-	}
-
-	public void setSecteurId(Long secteurId) {
-		this.secteurId = secteurId;
-	}
-
-	public Collection<DocumentDeVenteModel> getDocuments() {
-		return documents;
-	}
-
-	public void setDocuments(Collection<DocumentDeVenteModel> documents) {
-		this.documents = documents;
-	}
-
-	public Collection<ClientModel> getClientModels() {
-		return clientModels;
-	}
-
-	public void setClientModels(Collection<ClientModel> clientModels) {
-		this.clientModels = clientModels;
-	}
-
-	public ZoneModel() {
-		setTypeLocal(AutreEnum.ZONE);
-	}
-
 	public ZoneModel(Zone z) {
 		super(z);
 		setClientModels(gestClients(z));
 		setDocuments(getDocuments(z));
-		setSecteurId((z.getSecteur()==null)?null:z.getSecteur().getLocalId());
+		setSecteurId((z.getSecteur() == null) ? null : z.getSecteur().getLocalId());
 	}
 
 	private Collection<DocumentDeVenteModel> getDocuments(Zone z) {

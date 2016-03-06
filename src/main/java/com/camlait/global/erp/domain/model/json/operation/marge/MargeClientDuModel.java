@@ -1,13 +1,15 @@
 package com.camlait.global.erp.domain.model.json.operation.marge;
 
-import com.camlait.global.erp.domain.enumeration.SensOperation;
 import com.camlait.global.erp.domain.operation.marge.MargeClient;
 
-public class MargeClientDuModel extends MargeClientModel {
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-	public MargeClientDuModel() {
-		setSensOperation(SensOperation.ENTREE);
-	}
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+public class MargeClientDuModel extends MargeClientModel {
 
 	public MargeClientDuModel(MargeClient m) {
 		super(m);
