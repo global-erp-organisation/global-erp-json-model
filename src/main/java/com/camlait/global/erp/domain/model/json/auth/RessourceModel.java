@@ -2,7 +2,7 @@ package com.camlait.global.erp.domain.model.json.auth;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.auth.Ressource;
 import com.camlait.global.erp.domain.model.json.Entite;
@@ -51,10 +51,8 @@ public class RessourceModel extends Entite {
 	}
 
 	private Collection<RessourceModel> getItems(Ressource r) {
-		Collection<RessourceModel> rms = new HashSet<>();
-		r.getItems().stream().forEach(rs -> {
-			rms.add(new RessourceModel(rs));
-		});
-		return rms;
+		return r.getItems().stream().map(rs->{
+		    return new RessourceModel(rs);
+		}).collect(Collectors.toList());
 	}
 }

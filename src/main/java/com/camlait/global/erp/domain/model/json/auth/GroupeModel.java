@@ -2,7 +2,7 @@ package com.camlait.global.erp.domain.model.json.auth;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.auth.Groupe;
 import com.camlait.global.erp.domain.model.json.Entite;
@@ -46,11 +46,9 @@ public class GroupeModel extends Entite {
 	}
 
 	private static Collection<GroupeUtilisateurModel> getGu(Groupe g) {
-		final Collection<GroupeUtilisateurModel> gus = new HashSet<>();
-		g.getGroupeUtilisateurs().stream().forEach(gu -> {
-			gus.add(new GroupeUtilisateurModel(gu));
-		});
-		return gus;
+		return g.getGroupeUtilisateurs().stream().map(gu->{
+		    return new GroupeUtilisateurModel(gu);
+		}).collect(Collectors.toList());
 	}
 
 	public GroupeModel(Long groupeId, String descriptionGroupe, Date dateDeCreation, Date derniereMiseAJour,

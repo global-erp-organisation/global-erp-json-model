@@ -2,7 +2,7 @@ package com.camlait.global.erp.domain.model.json.operation.caisse;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.model.json.Entite;
 import com.camlait.global.erp.domain.operation.caisse.JournalCaisse;
@@ -17,42 +17,39 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class JournalCaisseModel extends Entite {
 
-	private Long journalId;
+    private Long journalId;
 
-	private String codeJournal;
+    private String codeJournal;
 
-	private String description;
+    private String description;
 
-	private Date dateDebutJournal;
+    private Date dateDebutJournal;
 
-	private Date dateFinJournal;
+    private Date dateFinJournal;
 
-	private Long caisseId;
+    private Long caisseId;
 
-	@JsonManagedReference
-	private Collection<OperationDeCaisseModel> operations;
+    @JsonManagedReference
+    private Collection<OperationDeCaisseModel> operations;
 
-	private Date dateDeCreation;
+    private Date dateDeCreation;
 
-	private Date derniereMiseAJour;
+    private Date derniereMiseAJour;
 
+    public JournalCaisseModel(JournalCaisse j) {
+        setCaisseId((j.getCaisse() == null) ? null : j.getCaisse().getCaisseId());
+        setCodeJournal(j.getCodeJournal());
+        setDateDebutJournal(j.getDateDebutJournal());
+        setDateFinJournal(j.getDateFinJournal());
+        setDerniereMiseAJour(j.getDerniereMiseAJour());
+        setDescription(j.getDescription());
+        setJournalId(j.getJournalId());
+        setOperations(getOperations(j));
+    }
 
-	public JournalCaisseModel(JournalCaisse j) {
-		setCaisseId((j.getCaisse()==null)?null:j.getCaisse().getCaisseId());
-		setCodeJournal(j.getCodeJournal());
-		setDateDebutJournal(j.getDateDebutJournal());
-		setDateFinJournal(j.getDateFinJournal());
-		setDerniereMiseAJour(j.getDerniereMiseAJour());
-		setDescription(j.getDescription());
-		setJournalId(j.getJournalId());
-		setOperations(getOperations(j));
-	}
-
-	private Collection<OperationDeCaisseModel> getOperations(JournalCaisse j) {
-		Collection<OperationDeCaisseModel> ops = new HashSet<>();
-		j.getOpreations().stream().forEach(o -> {
-			ops.add(new OperationDeCaisseModel(o));
-		});
-		return ops;
-	}
+    private Collection<OperationDeCaisseModel> getOperations(JournalCaisse j) {
+        return j.getOpreations().stream().map(o -> {
+            return new OperationDeCaisseModel(o);
+        }).collect(Collectors.toList());
+    }
 }

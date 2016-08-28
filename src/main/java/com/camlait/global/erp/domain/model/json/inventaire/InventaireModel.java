@@ -2,7 +2,7 @@ package com.camlait.global.erp.domain.model.json.inventaire;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.inventaire.Inventaire;
 import com.camlait.global.erp.domain.model.json.Entite;
@@ -21,61 +21,57 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InventaireModel extends Entite {
 
-	private Long inventaireId;
+    private Long inventaireId;
 
-	private String codeInventaire;
+    private String codeInventaire;
 
-	private Date dateInventaire;
+    private Date dateInventaire;
 
-	private String note;
+    private String note;
 
-	private Long magasinId;
+    private Long magasinId;
 
-	private Long magasinierSortantId;
+    private Long magasinierSortantId;
 
-	private Long magasinierEntrantId;
+    private Long magasinierEntrantId;
 
-	private boolean inventaireClos;
+    private boolean inventaireClos;
 
-	@JsonManagedReference
-	private Collection<DocumentModel> documentModels;
+    @JsonManagedReference
+    private Collection<DocumentModel> documentModels;
 
-	@JsonManagedReference
-	private Collection<LigneInventaireModel> ligneInventaireModels;
+    @JsonManagedReference
+    private Collection<LigneInventaireModel> ligneInventaireModels;
 
-	private Date dateDeCreation;
+    private Date dateDeCreation;
 
-	private Date derniereMiseAJour;
+    private Date derniereMiseAJour;
 
-	public InventaireModel(Inventaire i) {
-		setCodeInventaire(i.getCodeInventaire());
-		setDateDeCreation(i.getDateDeCreation());
-		setDerniereMiseAJour(i.getDerniereMiseAJour());
-		setDateInventaire(i.getDateInventaire());
-		setDocumentModels(getDocuments(i));
-		setInventaireClos(i.isInventaireClos());
-		setInventaireId(i.getInventaireId());
-		setLigneInventaireModels(getLigneInventaires(i));
-		setMagasinId((i.getMagasin()==null)?null:i.getMagasin().getMagasinId());
-		setMagasinierEntrantId((i.getMagasinierEntrant()==null)?null:i.getMagasinierEntrant().getPartenaireId());
-		setMagasinierSortantId((i.getMagasinierSortant()==null)?null:i.getMagasinierSortant().getPartenaireId());
-		setNote(i.getNote());
-	}
+    public InventaireModel(Inventaire i) {
+        setCodeInventaire(i.getCodeInventaire());
+        setDateDeCreation(i.getDateDeCreation());
+        setDerniereMiseAJour(i.getDerniereMiseAJour());
+        setDateInventaire(i.getDateInventaire());
+        setDocumentModels(getDocuments(i));
+        setInventaireClos(i.isInventaireClos());
+        setInventaireId(i.getInventaireId());
+        setLigneInventaireModels(getLigneInventaires(i));
+        setMagasinId((i.getMagasin() == null) ? null : i.getMagasin().getMagasinId());
+        setMagasinierEntrantId((i.getMagasinierEntrant() == null) ? null : i.getMagasinierEntrant().getPartenaireId());
+        setMagasinierSortantId((i.getMagasinierSortant() == null) ? null : i.getMagasinierSortant().getPartenaireId());
+        setNote(i.getNote());
+    }
 
-	private Collection<DocumentModel> getDocuments(Inventaire i) {
-		Collection<DocumentModel> dis = new HashSet<>();
-		i.getDocuments().stream().forEach(d -> {
-			dis.add(new DocumentModel(d));
-		});
-		return dis;
-	}
+    private Collection<DocumentModel> getDocuments(Inventaire i) {
+        return i.getDocuments().stream().map(d -> {
+            return new DocumentModel(d);
+        }).collect(Collectors.toList());
+    }
 
-	private Collection<LigneInventaireModel> getLigneInventaires(Inventaire i) {
-		Collection<LigneInventaireModel> lis = new HashSet<>();
-		i.getLigneInventaires().stream().forEach(l -> {
-			lis.add(new LigneInventaireModel(l));
-		});
-		return lis;
-	}
+    private Collection<LigneInventaireModel> getLigneInventaires(Inventaire i) {
+        return i.getLigneInventaires().stream().map(l -> {
+            return new LigneInventaireModel(l);
+        }).collect(Collectors.toList());
+    }
 
 }

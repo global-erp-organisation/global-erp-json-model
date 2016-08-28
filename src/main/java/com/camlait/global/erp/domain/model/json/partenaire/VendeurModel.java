@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.partenaire;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.model.json.operation.manquant.ManquantFinancierModel;
 import com.camlait.global.erp.domain.partenaire.Vendeur;
@@ -34,10 +34,8 @@ public class VendeurModel extends EmployeModel {
 	}
 
 	private Collection<ManquantFinancierModel> getManquantFinanciers(Vendeur v) {
-		Collection<ManquantFinancierModel> mfs = new HashSet<>();
-		v.getManquantFinanciers().stream().forEach(m -> {
-			mfs.add(new ManquantFinancierModel(m));
-		});
-		return mfs;
+		return v.getManquantFinanciers().stream().map(m->{
+		    return new ManquantFinancierModel(m);
+		}).collect(Collectors.toList());
 	}
 }

@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.organisation;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.organisation.Region;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -28,11 +28,9 @@ public class RegionModel extends LocalisationModel {
 
 
 	private Collection<SecteurModel> getSecteurs(Region r) {
-		Collection<SecteurModel> secteurs = new HashSet<>();
-		r.getSecteurs().stream().forEach(s -> {
-			secteurs.add(new SecteurModel(s));
-		});
-		return secteurs;
+		return r.getSecteurs().stream().map(s->{
+		    return new SecteurModel(s);
+		}).collect(Collectors.toList());
 	}
 
 }

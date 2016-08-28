@@ -3,6 +3,7 @@ package com.camlait.global.erp.domain.model.json.bmq;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.bmq.Bmq;
 import com.camlait.global.erp.domain.model.json.Entite;
@@ -70,18 +71,14 @@ public class BmqModel extends Entite {
 	}
 
 	private Collection<RecouvrementModel> getRecouvrement(Bmq b) {
-		Collection<RecouvrementModel> recs = new HashSet<>();
-		b.getRecouvrements().stream().forEach(r -> {
-			recs.add(new RecouvrementModel(r));
-		});
-		return recs;
+		return b.getRecouvrements().stream().map(r->{
+		    return new RecouvrementModel(r);
+		}).collect(Collectors.toList());
 	}
 
 	private Collection<LigneBmqModel> getLigneBmq(Bmq b) {
-		Collection<LigneBmqModel> lignes = new HashSet<>();
-		b.getLigneBmqs().stream().forEach(l -> {
-			lignes.add(new LigneBmqModel(l));
-		});
-		return lignes;
+		return b.getLigneBmqs().stream().map(l->{
+		    return new LigneBmqModel(l);
+		}).collect(Collectors.toList());
 	}
 }

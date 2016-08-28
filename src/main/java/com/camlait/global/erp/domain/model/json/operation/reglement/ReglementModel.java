@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.operation.reglement;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.model.json.operation.OperationModel;
 import com.camlait.global.erp.domain.model.json.operation.reglement.lettrage.FactureReglementModel;
@@ -28,11 +28,9 @@ public class ReglementModel extends OperationModel {
 	}
 
 	private Collection<FactureReglementModel> getFacture(Reglement r) {
-		Collection<FactureReglementModel> fs = new HashSet<>();
-		r.getFactureReglements().stream().forEach(f -> {
-			fs.add(new FactureReglementModel(f));
-		});
-		return fs;
+		return r.getFactureReglements().stream().map(f->{
+		    return new FactureReglementModel(f);
+		}).collect(Collectors.toList());
 	}
 
 }

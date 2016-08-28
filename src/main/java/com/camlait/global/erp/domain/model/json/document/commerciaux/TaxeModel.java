@@ -35,5 +35,4 @@ public class TaxeModel extends Entite {
 		setTaxeId(t.getTaxeId());
 		setValeurPourcentage(t.getValeurPourcentage());
 	}
-
 }

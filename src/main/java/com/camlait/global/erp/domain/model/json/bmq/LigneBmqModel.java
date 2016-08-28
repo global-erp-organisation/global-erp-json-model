@@ -2,7 +2,7 @@ package com.camlait.global.erp.domain.model.json.bmq;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.bmq.LigneBmq;
 import com.camlait.global.erp.domain.model.json.Entite;
@@ -52,11 +52,8 @@ public class LigneBmqModel extends Entite {
 	}
 
 	private Collection<LigneBmqTaxeModel> getLigneBmqTaxeModels(LigneBmq lb) {
-		Collection<LigneBmqTaxeModel> lbs = new HashSet<>();
-		lb.getLigneBmqTaxes().stream().forEach(l -> {
-			lbs.add(new LigneBmqTaxeModel(l));
-		});
-		return lbs;
-
+		return lb.getLigneBmqTaxes().stream().map(l->{
+		    return new LigneBmqTaxeModel(l);
+		}).collect(Collectors.toList());
 	}
 }

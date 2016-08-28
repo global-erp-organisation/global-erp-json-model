@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.organisation;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.model.json.document.commerciaux.vente.DocumentDeVenteModel;
 import com.camlait.global.erp.domain.model.json.partenaire.ClientModel;
@@ -17,34 +17,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ZoneModel extends LocalisationModel {
 
-	private Long secteurId;
+    private Long secteurId;
 
-	@JsonManagedReference
-	private Collection<DocumentDeVenteModel> documents;
+    @JsonManagedReference
+    private Collection<DocumentDeVenteModel> documents;
 
-	@JsonManagedReference
-	private Collection<ClientModel> clientModels;
+    @JsonManagedReference
+    private Collection<ClientModel> clientModels;
 
-	public ZoneModel(Zone z) {
-		super(z);
-		setClientModels(gestClients(z));
-		setDocuments(getDocuments(z));
-		setSecteurId((z.getSecteur() == null) ? null : z.getSecteur().getLocalId());
-	}
+    public ZoneModel(Zone z) {
+        super(z);
+        setClientModels(gestClients(z));
+        setDocuments(getDocuments(z));
+        setSecteurId((z.getSecteur() == null) ? null : z.getSecteur().getLocalId());
+    }
 
-	private Collection<DocumentDeVenteModel> getDocuments(Zone z) {
-		Collection<DocumentDeVenteModel> docs = new HashSet<>();
-		z.getDocuments().stream().forEach(d -> {
-			docs.add(new DocumentDeVenteModel(d));
-		});
-		return docs;
-	}
+    private Collection<DocumentDeVenteModel> getDocuments(Zone z) {
+        return z.getDocuments().stream().map(d -> {
+            return new DocumentDeVenteModel(d);
+        }).collect(Collectors.toList());
+    }
 
-	private Collection<ClientModel> gestClients(Zone z) {
-		Collection<ClientModel> clients = new HashSet<>();
-		z.getClients().stream().forEach(c -> {
-			clients.add(new ClientModel(c));
-		});
-		return clients;
-	}
+    private Collection<ClientModel> gestClients(Zone z) {
+        return z.getClients().stream().map(c -> {
+            return new ClientModel(c);
+        }).collect(Collectors.toList());
+    }
 }

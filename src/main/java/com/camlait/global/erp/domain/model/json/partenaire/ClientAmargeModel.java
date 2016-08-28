@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.partenaire;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.model.json.operation.marge.MargeClientModel;
 import com.camlait.global.erp.domain.partenaire.ClientAmarge;
@@ -16,20 +16,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClientAmargeModel extends ClientModel {
 
-	@JsonManagedReference
-	private Collection<MargeClientModel> margeClientModels;
+    @JsonManagedReference
+    private Collection<MargeClientModel> margeClientModels;
 
+    public ClientAmargeModel(ClientAmarge c) {
+        super(c);
+        setMargeClientModels(getMarges(c));
+    }
 
-	public ClientAmargeModel(ClientAmarge c) {
-		super(c);
-		setMargeClientModels(getMarges(c));
-	}
-
-	private Collection<MargeClientModel> getMarges(ClientAmarge c) {
-		Collection<MargeClientModel> ms = new HashSet<>();
-		c.getMargeClients().stream().forEach(m -> {
-			ms.add(new MargeClientModel(m));
-		});
-		return ms;
-	}
+    private Collection<MargeClientModel> getMarges(ClientAmarge c) {
+        return c.getMargeClients().stream().map(m -> {
+            return new MargeClientModel(m);
+        }).collect(Collectors.toList());
+    }
 }

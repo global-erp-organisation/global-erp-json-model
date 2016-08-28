@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.organisation;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.organisation.Centre;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -15,20 +15,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CentreModel extends LocalisationModel {
 
-	@JsonManagedReference
-	private Collection<RegionModel> regionModels;
+    @JsonManagedReference
+    private Collection<RegionModel> regionModels;
 
+    public CentreModel(Centre c) {
+        super(c);
+        setRegionModels(getRegion(c));
+    }
 
-	public CentreModel(Centre c) {
-		super(c);
-		setRegionModels(getRegion(c));
-	}
-
-	private Collection<RegionModel> getRegion(Centre c) {
-		Collection<RegionModel> regions = new HashSet<>();
-		c.getRegions().stream().forEach(r -> {
-			regions.add(new RegionModel(r));
-		});
-		return regions;
-	}
+    private Collection<RegionModel> getRegion(Centre c) {
+        return c.getRegions().stream().map(r -> {
+            return new RegionModel(r);
+        }).collect(Collectors.toList());
+    }
 }

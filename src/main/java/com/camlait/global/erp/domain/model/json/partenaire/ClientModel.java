@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.partenaire;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.model.json.document.commerciaux.vente.DocumentDeVenteModel;
 import com.camlait.global.erp.domain.partenaire.Client;
@@ -19,31 +19,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClientModel extends PartenaireModel {
 
-	private Long zoneId;
+    private Long zoneId;
 
-	@JsonManagedReference
-	private Collection<DocumentDeVenteModel> documentDeVenteModels;
+    @JsonManagedReference
+    private Collection<DocumentDeVenteModel> documentDeVenteModels;
 
-	private String description;
+    private String description;
 
-	private boolean clientAristourne;
+    private boolean clientAristourne;
 
-	private double ristourne;
+    private double ristourne;
 
-	public ClientModel(Client c) {
-		super(c);
-		setDocumentDeVenteModels(getDocs(c));
-		setZoneId((c.getZone() == null) ? null : c.getZone().getLocalId());
-		setRistourne(c.getRistourne());
-		setClientAristourne(c.isClientAristourne());
-		setDescription(c.getDescription());
-	}
+    public ClientModel(Client c) {
+        super(c);
+        setDocumentDeVenteModels(getDocs(c));
+        setZoneId((c.getZone() == null) ? null : c.getZone().getLocalId());
+        setRistourne(c.getRistourne());
+        setClientAristourne(c.isClientAristourne());
+        setDescription(c.getDescription());
+    }
 
-	private Collection<DocumentDeVenteModel> getDocs(Client c) {
-		Collection<DocumentDeVenteModel> ds = new HashSet<>();
-		c.getDocumentDeVentes().stream().forEach(d -> {
-			ds.add(new DocumentDeVenteModel(d));
-		});
-		return ds;
+    private Collection<DocumentDeVenteModel> getDocs(Client c) {
+		return c.getDocumentDeVentes().stream().map(d->{
+		    return new DocumentDeVenteModel(d);
+		}).collect(Collectors.toList());
 	}
 }

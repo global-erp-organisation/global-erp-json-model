@@ -2,7 +2,7 @@ package com.camlait.global.erp.domain.model.json.auth;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.auth.Utilisateur;
 import com.camlait.global.erp.domain.model.json.Entite;
@@ -18,34 +18,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UtilisateurModel extends Entite {
 
-	private String codeUtilisateur;
+    private String codeUtilisateur;
 
-	private String courriel;
+    private String courriel;
 
-	private String motDePasse;
+    private String motDePasse;
 
-	private Date dateDeCreation;
+    private Date dateDeCreation;
 
-	private Date derniereMiseAJour;
+    private Date derniereMiseAJour;
 
-	@JsonManagedReference
-	private Collection<EmployeModel> employeModels;
+    @JsonManagedReference
+    private Collection<EmployeModel> employeModels;
 
+    public UtilisateurModel(Utilisateur u) {
+        setCodeUtilisateur(u.getCodeUtilisateur());
+        setCodeUtilisateur(u.getCourriel());
+        setDateDeCreation(u.getDateDeCreation());
+        setDerniereMiseAJour(u.getDerniereMiseAJour());
+        setEmployeModels(getEmployes(u));
+        setMotDePasse(u.getMotDePasse());
+    }
 
-	public UtilisateurModel(Utilisateur u) {
-		setCodeUtilisateur(u.getCodeUtilisateur());
-		setCodeUtilisateur(u.getCourriel());
-		setDateDeCreation(u.getDateDeCreation());
-		setDerniereMiseAJour(u.getDerniereMiseAJour());
-		setEmployeModels(getEmployes(u));
-		setMotDePasse(u.getMotDePasse());
-	}
-
-	private Collection<EmployeModel> getEmployes(Utilisateur u) {
-		Collection<EmployeModel> emps = new HashSet<>();
-		u.getEmployes().stream().forEach(e -> {
-			emps.add(new EmployeModel(e));
-		});
-		return emps;
-	}
+    private Collection<EmployeModel> getEmployes(Utilisateur u) {
+        return u.getEmployes().stream().map(e -> {
+            return new EmployeModel(e);
+        }).collect(Collectors.toList());
+    }
 }

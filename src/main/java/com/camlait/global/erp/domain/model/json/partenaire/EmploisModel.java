@@ -1,7 +1,7 @@
 package com.camlait.global.erp.domain.model.json.partenaire;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.stream.Collectors;
 
 import com.camlait.global.erp.domain.model.json.Entite;
 import com.camlait.global.erp.domain.partenaire.Emplois;
@@ -16,28 +16,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmploisModel extends Entite {
 
-	private Long emploisId;
+    private Long emploisId;
 
-	private String codeEmplois;
-	private String descriptionEmplois;
+    private String codeEmplois;
+    private String descriptionEmplois;
 
-	@JsonManagedReference
-	private Collection<EmployeModel> employeModels;
+    @JsonManagedReference
+    private Collection<EmployeModel> employeModels;
 
+    public EmploisModel(Emplois e) {
+        setCodeEmplois(e.getCodeEmplois());
+        setDescriptionEmplois(e.getDescriptionEmplois());
+        setEmploisId(e.getEmploisId());
+        setEmployeModels(getEmployes(e));
+    }
 
-	public EmploisModel(Emplois e) {
-		setCodeEmplois(e.getCodeEmplois());
-		setDescriptionEmplois(e.getDescriptionEmplois());
-		setEmploisId(e.getEmploisId());
-		setEmployeModels(getEmployes(e));
-	}
-
-	private Collection<EmployeModel> getEmployes(Emplois e) {
-		Collection<EmployeModel> ems = new HashSet<>();
-		e.getEmployes().stream().forEach(em -> {
-			ems.add(new EmployeModel(em));
-		});
-		return ems;
-	}
+    private Collection<EmployeModel> getEmployes(Emplois e) {
+        return e.getEmployes().stream().map(em -> {
+            return new EmployeModel(em);
+        }).collect(Collectors.toList());
+    }
 
 }
