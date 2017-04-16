@@ -57,7 +57,7 @@ public class ProductModel extends BaseEntity {
         // TODO Auto-generated method stub
         return null;
     }
-    
+        
     public static ProductModel from(Product p){
         return ProductModel.builder()
                 .productId(p.getProductId())
