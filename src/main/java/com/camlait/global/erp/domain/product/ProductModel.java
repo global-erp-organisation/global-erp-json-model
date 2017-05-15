@@ -2,12 +2,8 @@ package com.camlait.global.erp.domain.product;
 
 import java.util.Collection;
 
-import com.camlait.global.erp.domain.BaseEntity;
+import com.camlait.global.erp.domain.BaseEntityModel;
 import com.camlait.global.erp.domain.document.business.Tax;
-import com.camlait.global.erp.domain.enumeration.EnumTypeEntitity;
-import com.camlait.global.erp.domain.inventory.Stock;
-import com.camlait.global.erp.domain.inventory.StockCard;
-import com.camlait.global.erp.domain.tarif.Tariffication;
 import com.google.common.collect.Lists;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -18,47 +14,29 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @SuppressWarnings("serial")
-@AllArgsConstructor(suppressConstructorProperties = true)
+@AllArgsConstructor
 @Data
-@EqualsAndHashCode(callSuper = false, exclude = {"taxes", "stocks", "stockCards", "tarifications"})
-@ToString(exclude = {"taxes", "stocks", "stockCards", "tarifications"})
+@EqualsAndHashCode(callSuper = false)
+@ToString
 @Builder
-public class ProductModel extends BaseEntity {
+public class ProductModel extends BaseEntityModel {
 
     @ApiModelProperty(hidden = true)
     private String productId;
     private String productCode;
     private String productDescription;
+    private String productCategoryId;
     private String productCategoryCode;
     private boolean taxableProduct;
     private Double defaultUnitprice;
     private boolean stockFollowing;
-
-    @ApiModelProperty(hidden = true)
     private Collection<Tax> taxes = Lists.newArrayList();
-    @ApiModelProperty(hidden = true)
-    private Collection<Stock> stocks = Lists.newArrayList();
-    @ApiModelProperty(hidden = true)
-    private Collection<StockCard> stockCards = Lists.newArrayList();
-    @ApiModelProperty(hidden = true)
-    private Collection<Tariffication> tarifications = Lists.newArrayList();
 
     public ProductModel() {
     }
 
-    @Override
-    public void postConstructOperation() {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public EnumTypeEntitity toEnum() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-        
-    public static ProductModel from(Product p){
+       
+    public static ProductModel fromProduct(Product p){
         return ProductModel.builder()
                 .productId(p.getProductId())
                 .productCode(p.getProductCode())
@@ -66,6 +44,22 @@ public class ProductModel extends BaseEntity {
                 .taxableProduct(p.isTaxableProduct())
                 .defaultUnitprice(p.getDefaultUnitprice())
                 .stockFollowing(p.isStockFollowing())
+                .taxes(p.getTaxes())
+                .productCategoryCode(p.getCategory().getProductCategoryCode())
+                .productCategoryId(p.getProductCategoryId())
                 .build();
     }
+    
+    public static Product fromProductModel(ProductModel p){
+        return Product.builder()
+                .productId(p.getProductId())
+                .productCode(p.getProductCode())
+                .productDescription(p.getProductDescription())
+                .taxableProduct(p.isTaxableProduct())
+                .defaultUnitprice(p.getDefaultUnitprice())
+                .stockFollowing(p.isStockFollowing())
+                .taxes(p.getTaxes())
+                .build();
+    }
+
 }
